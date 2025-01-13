@@ -1,0 +1,53 @@
+/*Slip oops_111: Write a C++ Program to display Names, Roll No., and grades of 3 students who have appeared
+in the examination. Declare the class of name, Roll No. and grade. Create an array of class
+objects. Read and display the contents of the array.*/
+#include <iostream>
+using namespace std;
+#define MAX 10
+class student
+{
+private:
+char name[30];
+int rollNo;
+int total;
+float perc;
+public:
+void getDetails(void); //member function to get student's details
+void putDetails(void); //member function to print student's details
+};
+void student:: getDetails(void) //member function definition, outside of the class
+{
+cout << "Enter name: " ;
+cin >> name;
+cout << "Enter roll number: ";
+cin >> rollNo;
+cout << "Enter total marks outof 500: ";
+cin >> total;
+perc=(float)total/500*100;
+}
+void student:: putDetails(void) //member function definition, outside of the class
+{
+cout << "Student details:\n";
+cout << "Name:"<< name << ",Roll Number:" << rollNo << ",Total:" << total << ",Percentage:" <<
+perc;
+}
+int main()
+{
+student std[MAX]; //array of objects creation
+
+int n,loop;
+cout << "Enter total number of students: ";
+cin >> n;
+for (loop=0;loop< n; loop++)
+{
+cout << "Enter details of student " << loop+1 << ":\n";
+std[loop].getDetails();
+}
+cout << endl;
+for(loop=0;loop< n; loop++)
+{
+cout << "Details of student " << (loop+1) << ":\n";
+std[loop].putDetails();
+}
+return 0;
+}
